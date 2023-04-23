@@ -1,4 +1,4 @@
-using UnityEngine; //¤Ş¥ÎUnity ¤ŞÀº¨ç¥Ü®w
+ï»¿using UnityEngine; //å¼•ç”¨Unity å¼•æ“å‡½ç¤ºåº«
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
@@ -6,7 +6,7 @@ public class MenuManager : MonoBehaviour
 
 	public void StartGame()
 	{
-		SceneManager.LoadScene("¹CÀ¸³õ´º");
+		SceneManager.LoadScene("éŠæˆ²å ´æ™¯");
 	}
 
 	public void QuitGame()
