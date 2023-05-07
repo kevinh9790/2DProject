@@ -1,5 +1,11 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// 角色控制系統
+/// 1. 移動速度
+/// 2. 閒置&跑步動畫
+/// 3. 開關跑步
+/// </summary>
 public class ControlSystem : MonoBehaviour
 {
 	[SerializeField] SpriteRenderer a;

@@ -1,6 +1,9 @@
 ﻿using UnityEngine; //引用Unity 引擎函示庫
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// 遊戲開頭畫面場景
+/// </summary>
 public class MenuManager : MonoBehaviour
 {
 
