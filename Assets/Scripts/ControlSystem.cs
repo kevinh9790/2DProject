@@ -2,6 +2,8 @@
 
 public class ControlSystem : MonoBehaviour
 {
+	[SerializeField] SpriteRenderer a;
+
 	[Header("移動速度"), Range(0.5f, 99.9f)]
 	public float moveSpeed = 10.5f;
 
@@ -26,10 +28,34 @@ public class ControlSystem : MonoBehaviour
 
 	private void Update()
 	{
+		MoveAndAnimation();
+
+	}
+
+	private void MoveAndAnimation()
+	{
 		// print("<color=blue>更新事件</color>");
 		float h = Input.GetAxis("Horizontal");
 		float v = Input.GetAxis("Vertical");
-		
+
 		rig.velocity = new Vector3(h, v, 0) * moveSpeed;
+
+		if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+		{
+			//print("玩家按下左");
+			//a.flipX = false;
+			transform.eulerAngles = new Vector3(0, 0, 0);
+
+		}
+
+		else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+		{
+			//print("玩家按下右");
+			//a.flipX = true;
+			transform.eulerAngles = new Vector3(0, 180, 0);
+
+		}
+
+		ani.SetBool(parRun, h > 0 || h < 0 || v > 0 || v < 0);
 	}
 }
