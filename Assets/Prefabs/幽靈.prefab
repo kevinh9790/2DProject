@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8499086517801934256}
   - component: {fileID: 5547102591868671631}
   - component: {fileID: -3108664860263058168}
+  - component: {fileID: 7210675091841964205}
   m_Layer: 0
   m_Name: "\u5E7D\u9748"
   m_TagString: Untagged
@@ -122,3 +123,16 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   moveSpeed: 3.5
   player: {fileID: 0}
+--- !u!114 &7210675091841964205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8062102114976392109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8028c024eff5546a4456586115e44c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 21e92cec627db4c40bd1662bbd615902, type: 2}
