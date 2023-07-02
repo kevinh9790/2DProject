@@ -140,7 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
   moveSpeed: 0.5
-  player: {fileID: 0}
+  data: {fileID: 11400000, guid: 64035da87db41c947bf487b21ffe35d9, type: 2}
 --- !u!50 &2667210042766414384
 Rigidbody2D:
   serializedVersion: 4
@@ -175,3 +175,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 64035da87db41c947bf487b21ffe35d9, type: 2}
+  prefabDamage: {fileID: 1360135384015757646, guid: e3f2e0587ac1c55478ee73d8dd2941c6,
+    type: 3}

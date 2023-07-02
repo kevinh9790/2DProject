@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class DamageSystem : MonoBehaviour
 {
     [Header("血量資料")]
     public DataHealth data;
+	[Header("畫布傷害值")]
+	public GameObject prefabDamage;
 
 	private float hp;
 
@@ -32,7 +35,9 @@ public class DamageSystem : MonoBehaviour
 	{
 		print($"<color=#ff6666>受到的傷害 {damage}</color>");
 		hp -= damage;
-		//print("血量剩下: " + hp);
+		GameObject tempDamage = Instantiate(prefabDamage, transform.position, transform.rotation);
+		tempDamage.transform.Find("文字傷害值").GetComponent<TextMeshProUGUI>().text = damage.ToString();
+		Destroy(tempDamage, 1.5f);
 
 		if (hp <= 0)
 		{
