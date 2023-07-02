@@ -6,10 +6,11 @@ using System.Linq;
 
 public class LevelManager : MonoBehaviour
 {
-    [Header("等級與經驗值介面")]
-    public TextMeshProUGUI textLv;
-    public TextMeshProUGUI textExp;
-    public Image imgExp;
+	#region 資料
+	[Header("等級與經驗值介面")]
+	public TextMeshProUGUI textLv;
+	public TextMeshProUGUI textExp;
+	public Image imgExp;
 	[Header("等級上限"), Range(0, 500)]
 	public int lvMax = 20;
 
@@ -25,8 +26,10 @@ public class LevelManager : MonoBehaviour
 	[Header("全部技能")]
 	public DataSkill[] dataSkills;
 
-	public List<DataSkill> randomSkill = new List<DataSkill>();
+	public List<DataSkill> randomSkill = new List<DataSkill>(); 
+	#endregion
 
+	#region 經驗值系統
 	[ContextMenu("更新經驗值需求表")]
 	private void UpdateExpNeeds()
 	{
@@ -46,7 +49,7 @@ public class LevelManager : MonoBehaviour
 	public void GetExp(float getExp)
 	{
 		exp += getExp;
-		
+
 
 		//如果經驗值大於等於經驗值需求 和 等級小於等級上限
 		if (exp >= expNeeds[lv - 1] && lv < lvMax)
@@ -63,6 +66,9 @@ public class LevelManager : MonoBehaviour
 
 	private void LevelUp()
 	{
+		//時間暫停
+		Time.timeScale = 0;
+
 		goLevelUp.SetActive(true);
 
 		//挑選出所有lv < 5的技能
@@ -82,7 +88,7 @@ public class LevelManager : MonoBehaviour
 		}
 	}
 
-	public void ClickSkillButton(int number) 
+	public void ClickSkillButton(int number)
 	{
 		print("按下按鈕: " + number);
 
@@ -90,13 +96,19 @@ public class LevelManager : MonoBehaviour
 
 		randomSkill[number].lv++;
 
-		if (randomSkill[number].nameSkill == "武器攻擊") UpdateWeaponAttack();
+		if (randomSkill[number].nameSkill == "武器攻擊") UpdateWeaponAttack(number);
 		if (randomSkill[number].nameSkill == "武器生成間隔") UpdateWeaponInterval(number);
 		if (randomSkill[number].nameSkill == "玩家血量") UpdatePlayerHealth(number);
 		if (randomSkill[number].nameSkill == "移動速度") UpdateMoveSpeed(number);
-		if (randomSkill[number].nameSkill == "經驗值範圍") UpdateExpRange();
-	}
+		if (randomSkill[number].nameSkill == "經驗值範圍") UpdateExpRange(number);
 
+		//時間恢復
+		Time.timeScale = 1;
+		goLevelUp.SetActive(false);
+	}
+	#endregion
+
+	#region 升級系統
 	[Header("控制系統：蝸牛")]
 	public ControlSystem controlSystem;
 
@@ -106,9 +118,25 @@ public class LevelManager : MonoBehaviour
 	[Header("玩家血量：玩家蝸牛")]
 	public DataHealth dataHealth;
 
-	public void UpdateWeaponAttack() 
+	[Header("經驗物件：金幣經驗值")]
+	public CircleCollider2D expCoin;
+
+	[Header("武器：豌豆")]
+	public Weapon weaponPea;
+
+	private void Awake()
 	{
-		
+		weaponPea.attack = dataSkills[0].skillValues[0];
+		weaponSystem.interval = dataSkills[1].skillValues[0];
+		dataHealth.hp = dataSkills[2].skillValues[0];
+		controlSystem.moveSpeed = dataSkills[3].skillValues[0];
+		expCoin.radius = dataSkills[4].skillValues[0];
+	}
+
+	public void UpdateWeaponAttack(int number)
+	{
+		int lv = randomSkill[number].lv;
+		weaponPea.attack = randomSkill[number].skillValues[lv - 1];
 	}
 
 	public void UpdateWeaponInterval(int number)
@@ -134,8 +162,10 @@ public class LevelManager : MonoBehaviour
 		controlSystem.moveSpeed = randomSkill[number].skillValues[lv - 1];
 	}
 
-	public void UpdateExpRange()
+	public void UpdateExpRange(int number)
 	{
-
-	}
+		int lv = randomSkill[number].lv;
+		expCoin.radius = randomSkill[number].skillValues[lv - 1];
+	} 
+	#endregion
 }

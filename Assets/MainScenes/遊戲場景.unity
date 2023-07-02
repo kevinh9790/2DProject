@@ -4724,7 +4724,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d69a355bcefd8f14297aed7c1ae1a20d, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -7609,6 +7609,9 @@ MonoBehaviour:
   controlSystem: {fileID: 987305672}
   weaponSystem: {fileID: 1268028393}
   dataHealth: {fileID: 11400000, guid: f9668e2a37111b549b67900b6d368dc3, type: 2}
+  expCoin: {fileID: 4227771347942749661, guid: 57b66a1c19dddae4695d1e857d42db03, type: 3}
+  weaponPea: {fileID: 9029000144820114791, guid: b30d5d04b3c706241937c97e28c6fdc6,
+    type: 3}
 --- !u!4 &2127266677
 Transform:
   m_ObjectHideFlags: 0

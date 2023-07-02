@@ -22,14 +22,16 @@ public class DamageSystem : MonoBehaviour
 		if (collision.gameObject.name.Contains("武器"))
 		{
 			//print("被武器打到～");
-			GetDamage();
+			float attack = collision.gameObject.GetComponent<Weapon>().attack;
+			GetDamage(attack);
 		}
 
 	}
 
-	private void GetDamage()
+	private void GetDamage(float damage)
 	{
-		hp -= 50;
+		print($"<color=#ff6666>受到的傷害 {damage}</color>");
+		hp -= damage;
 		//print("血量剩下: " + hp);
 
 		if (hp <= 0)
