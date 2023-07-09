@@ -4,6 +4,7 @@
 /// 敵人系統
 /// 1. 追蹤玩家
 /// 2. 翻面
+/// 3. 攻擊
 /// </summary>
 public class EnemySystem : MonoBehaviour
 {
@@ -15,15 +16,44 @@ public class EnemySystem : MonoBehaviour
 	public DataHealthEnemy data;
 
 	private Transform player;
+	private DamagePlayer damagePlayer;
+	private float timer;
+
+	private void OnDrawGizmos()
+	{
+		Gizmos.color = new Color(1, 0.3f, 0.2f, 0.5f);
+		Gizmos.DrawSphere(transform.position, data.attackRange);
+	}
 
 	private void Awake()
 	{
 		player = GameObject.Find("蝸牛").transform;
+		damagePlayer = player.GetComponent<DamagePlayer>();
 	}
 
 	private void Update()
 	{
 		transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
-		
+
+		float distance = Vector3.Distance(transform.position, player.position);
+		// print($"<color=#FF9966>距離: {distance}</color>");
+
+		if (distance < data.attackRange) Attack();
+
+		if (transform.position.x > player.position.x) transform.eulerAngles = new Vector3(0, 180, 0);
+		if (transform.position.x > player.position.x) transform.eulerAngles = new Vector3(0, 0, 0);
+	}
+
+	private void Attack() 
+	{
+		timer += Time.deltaTime;
+		// print($"<color=#99FF66>計時器: {timer}</color>");
+
+		if (timer > data.attackInterval)
+		{
+			print($"<color=#99FF66>攻擊玩家！</color>");
+			damagePlayer.GetDamage(data.attack);
+			timer = 0;
+		}
 	}
 }

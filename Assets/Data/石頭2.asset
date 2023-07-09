@@ -16,3 +16,6 @@ MonoBehaviour:
   prefabExp: {fileID: 3650776345324435252, guid: 57b66a1c19dddae4695d1e857d42db03,
     type: 3}
   dropProbability: 0.8
+  attack: 20
+  attackInterval: 2.5
+  attackRange: 1
