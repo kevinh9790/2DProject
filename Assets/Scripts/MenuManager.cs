@@ -14,6 +14,7 @@ public class MenuManager : MonoBehaviour
 
 	public void QuitGame()
 	{
+		Time.timeScale = 1;
 		Application.Quit();
 	}
 

@@ -16,5 +16,6 @@ public class Weapon : MonoBehaviour
 	public void Awake()
 	{
 		rig.AddForce(power);
+		Destroy(gameObject, 5);
 	}
 }

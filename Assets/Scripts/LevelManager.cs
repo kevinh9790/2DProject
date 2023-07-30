@@ -130,6 +130,9 @@ public class LevelManager : MonoBehaviour
 	[Header("武器：豌豆")]
 	public Weapon weaponPea;
 
+	[Header("玩家血量系統：蝸牛")]
+	public DamagePlayer damagePlayer;
+
 	private void Awake()
 	{
 		weaponPea.attack = dataSkills[0].skillValues[0];
@@ -149,6 +152,7 @@ public class LevelManager : MonoBehaviour
 	{
 		int lv = randomSkill[number].lv;
 		weaponSystem.interval = randomSkill[number].skillValues[lv - 1];
+		weaponSystem.ReSpawWeapon();
 
 	}
 
@@ -156,7 +160,7 @@ public class LevelManager : MonoBehaviour
 	{
 		int lv = randomSkill[number].lv;
 		dataHealth.hp = randomSkill[number].skillValues[lv - 1];
-
+		damagePlayer.UpdateHealth(dataHealth.hp);
 	}
 
 	public void UpdateMoveSpeed(int number)
