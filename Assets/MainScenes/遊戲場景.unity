@@ -81812,10 +81812,10 @@ Transform:
   m_Children:
   - {fileID: 7928555982272610254}
   - {fileID: 435667698604364094}
-  - {fileID: 1072526675502032570}
   - {fileID: 7520102372406944707}
-  - {fileID: 8661762432666486280}
+  - {fileID: 1072526675502032570}
   - {fileID: 228143064}
+  - {fileID: 8661762432666486280}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -82732,7 +82732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a: {fileID: 987305670}
-  moveSpeed: 10
+  moveSpeed: 5
   rig: {fileID: 987305674}
   ani: {fileID: 987305669}
   parRun: "\u958B\u95DC\u8DD1\u6B65"
@@ -85310,7 +85310,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 3.77, y: -0.17}
+  m_AnchoredPosition: {x: 3.77, y: 0.64}
   m_SizeDelta: {x: 800, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1639976591
